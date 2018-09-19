@@ -1,5 +1,7 @@
 package com.sxx.demo.tableEntity;
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -7,14 +9,13 @@ import java.io.Serializable;
  * 用户表
  */
 @Entity
-@Table(name = "user" )
+@Table(name = "user" ,uniqueConstraints={@UniqueConstraint(columnNames={"open_id"}) })
 public class UserTable implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true)
     private String uId;
-    @Column(unique = true)
+    @Column(name = "open_id")
     private String openId;
     @Column
     private String nickName;

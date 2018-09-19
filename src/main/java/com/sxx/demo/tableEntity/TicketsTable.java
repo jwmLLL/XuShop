@@ -6,12 +6,11 @@ import javax.persistence.*;
  * 用户登陆票证表
  */
 @Entity
-@Table(name = "ticket")
+@Table(name = "ticket" ,uniqueConstraints={@UniqueConstraint(columnNames={"uId"})})
 public class TicketsTable {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(name = "uId",unique = true)
     private String uId;//用户id
     @Column(name = "createTime")
     private long createTime;//生成时间
